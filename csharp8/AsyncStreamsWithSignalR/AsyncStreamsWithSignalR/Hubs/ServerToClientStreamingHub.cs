@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.Logging;
 using StreamSample.Models;
 using System;
 using System.Collections.Generic;
@@ -9,30 +10,33 @@ using System.Threading.Tasks;
 
 namespace AsyncStreamsWithSignalR.Hubs
 {
-    public class StreamingHub : Hub
+    public class ServerToClientStreamingHub : Hub
     {
-        public async IAsyncEnumerable<int> GetSomeData2(int count, int delay, [EnumeratorCancellation] CancellationToken cancellationToken)
+        // v2 - async streams
+        public async IAsyncEnumerable<SomeData> GetSomeDataWithAsyncStreams(int count, int delay, [EnumeratorCancellation] CancellationToken cancellationToken)
         {
             for (int i = 0; i < count; i++)
             {
+                cancellationToken.ThrowIfCancellationRequested();
                 await Task.Delay(delay);
-                yield return i;
+                yield return new SomeData { Value = i };
             }
         }
 
-        public ChannelReader<int> GetSomeData(
+        // v1 - using ChannelReader
+        public ChannelReader<SomeData> GetSomeDataWithChannelReader(
             int count, 
             int delay, 
             CancellationToken cancellationToken)
         {
-            var channel = Channel.CreateUnbounded<int>();
+            var channel = Channel.CreateUnbounded<SomeData>();
              _ = WriteItemsAsync(channel.Writer, count, delay, cancellationToken);
 
             return channel.Reader;
         }
 
         private async Task WriteItemsAsync(
-            ChannelWriter<int> writer,
+            ChannelWriter<SomeData> writer,
             int count,
             int delay,
             CancellationToken cancellationToken)
@@ -42,7 +46,7 @@ namespace AsyncStreamsWithSignalR.Hubs
                 for (var i = 0; i < count; i++)
                 {
                     cancellationToken.ThrowIfCancellationRequested();
-                    await writer.WriteAsync(i);
+                    await writer.WriteAsync(new SomeData { Value = i });
 
                     await Task.Delay(delay, cancellationToken);
                 }

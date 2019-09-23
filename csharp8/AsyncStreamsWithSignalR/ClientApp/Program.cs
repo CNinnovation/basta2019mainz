@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
 using StreamSample.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,8 +15,39 @@ namespace ClientApp
             Console.WriteLine("client - wait for service...");
             Console.ReadLine();
 
+            await ServerToClientStreamingAsync();
+            // await ClientToServerStreamingAsync();
+        }
+
+        private static async Task ClientToServerStreamingAsync()
+        {
+            static async IAsyncEnumerable<SomeData> clientStreamData()
+            {
+                for (var i = 0; i < 20; i++)
+                {
+                    await Task.Delay(2000);
+                    var data = new SomeData() { Value = i };
+                    yield return data;
+                }
+            }
+
             s_hubConnection = new HubConnectionBuilder()
-                .WithUrl("https://localhost:44340/hubs/stream")
+                .WithUrl("https://localhost:5001/hubs/uploadstream")
+                .Build();
+            var cts = new CancellationTokenSource();
+            await s_hubConnection.StartAsync(cts.Token);
+
+            await s_hubConnection.SendAsync("StartStream2", "Sample Stream", clientStreamData());
+
+            Console.WriteLine("SendAsync completed");
+            Console.ReadLine();
+
+        }
+
+        private static async Task ServerToClientStreamingAsync()
+        {
+            s_hubConnection = new HubConnectionBuilder()
+                .WithUrl("https://localhost:5001/hubs/stream")
                 .Build();
 
             s_hubConnection.Closed += async (ex) =>
@@ -28,20 +60,25 @@ namespace ClientApp
 
             var cts = new CancellationTokenSource();
             await s_hubConnection.StartAsync(cts.Token);
-            //var channel = await s_hubConnection.StreamAsChannelAsync<int>("GetSomeData", 100, 1000, cts.Token);
+
+            //// read from the hub using ChannelReader
+            //var channel = await s_hubConnection.StreamAsChannelAsync<SomeData>("GetSomeDataWithChannelReader", 100, 1000, cts.Token);
             //while (await channel.WaitToReadAsync())
             //{
-            //    while (channel.TryRead(out int data))
+            //    while (channel.TryRead(out SomeData data))
             //    {
             //        Console.WriteLine($"received {data}");
             //    }
             //}
-            var stream = s_hubConnection.StreamAsync<int>("GetSomeData2", 20, 100, cts.Token);
+
+            // read from the hub using async streams
+            var stream = s_hubConnection.StreamAsync<SomeData>("GetSomeDataWithAsyncStreams", 20, 100, cts.Token);
             await foreach (var d in stream)
             {
                 Console.WriteLine($"received {d}");
             }
-            Console.WriteLine("complete");
+
+            // https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/signalr/streaming.md
         }
     }
 }

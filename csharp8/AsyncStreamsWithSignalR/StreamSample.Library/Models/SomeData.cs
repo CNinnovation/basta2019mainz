@@ -1,9 +1,8 @@
 ﻿namespace StreamSample.Models
 {
-    public struct SomeData
+    public class SomeData
     {
-        public SomeData(int value) => Value = value;
-        public int Value { get; }
+        public int Value { get; set; }
 
         public override string ToString() => Value.ToString();
     }

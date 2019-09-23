@@ -20,7 +20,11 @@ namespace AsyncStreamsWithSignalR
             services.AddMvc().AddNewtonsoftJson();
 
             services.AddSignalR()
-                .AddHubOptions<StreamingHub>(config =>
+                .AddHubOptions<ClientToServerStreamingHub>(config =>
+                {
+                    config.EnableDetailedErrors = true;
+                })
+                .AddHubOptions<ServerToClientStreamingHub>(config =>
                 {
                     config.EnableDetailedErrors = true;
                 })
@@ -39,7 +43,8 @@ namespace AsyncStreamsWithSignalR
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHub<StreamingHub>("/hubs/stream");
+                endpoints.MapHub<ServerToClientStreamingHub>("/hubs/stream");
+                endpoints.MapHub<ClientToServerStreamingHub>("/hubs/uploadstream");
 
                 endpoints.MapGet("/", async context =>
                 {
