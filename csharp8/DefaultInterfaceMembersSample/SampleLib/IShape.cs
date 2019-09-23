@@ -10,7 +10,7 @@
     {
         IPosition Position { get; set; }
 
-        IPosition Move(IPosition newPosition);
+        // IPosition Move(IPosition newPosition);
 
         //public IPosition Move(IPosition newPosition)
         //{
