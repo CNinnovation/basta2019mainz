@@ -1,7 +1,5 @@
 ﻿using System;
 
-#nullable enable
-
 namespace NullableSampleApp
 {
     class Program
@@ -14,7 +12,7 @@ namespace NullableSampleApp
 
         static void ShowBook(Book book)
         {
-            Console.WriteLine($"{book.Title} {book.Publisher.ToUpper()}");
+            Console.WriteLine($"{book.Title.ToUpper()} {book.Publisher.ToUpper()}");
         }
     }
 }

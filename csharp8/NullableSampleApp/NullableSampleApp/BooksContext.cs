@@ -8,7 +8,6 @@ namespace NullableSampleApp
         public BooksContext(DbContextOptions<BooksContext> options)
             : base(options)
         {
-
         }
 
         public DbSet<Book> Books { get; set; }

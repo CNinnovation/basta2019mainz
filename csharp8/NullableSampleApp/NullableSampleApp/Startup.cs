@@ -18,6 +18,7 @@ namespace NullableSampleApp
         {
             var services = new ServiceCollection();
             // ... register services
+            services.AddDbContext<BooksContext>();
             Services = services.BuildServiceProvider();
         }
     }
