@@ -12,11 +12,11 @@
 
         // IPosition Move(IPosition newPosition);
 
-        //public IPosition Move(IPosition newPosition)
-        //{
-        //    Position.X = newPosition.X;
-        //    Position.Y = newPosition.Y;
-        //    return Position;
-        //}
+        public IPosition Move(IPosition newPosition)
+        {
+            Position.X = newPosition.X;
+            Position.Y = newPosition.Y;
+            return Position;
+        }
     }
 }

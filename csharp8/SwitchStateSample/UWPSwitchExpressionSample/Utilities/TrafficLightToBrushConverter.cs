@@ -18,10 +18,10 @@ namespace UWPSwitchExpressionSample.Utilities
             {
                 return parameter switch
                 {
-                    "Red" => lightState == LightState.Red ? _redBrush : _blackBrush,
+                    "Red"    => lightState == LightState.Red ? _redBrush : _blackBrush,
                     "Yellow" => lightState == LightState.Yellow ? _yellowBrush : _blackBrush,
-                    "Green" => lightState == LightState.Green ? _greenBrush : _blackBrush,
-                    _ => throw new ArgumentException($"{parameter} is an invalid value for {nameof(parameter)}")
+                    "Green"  => lightState == LightState.Green ? _greenBrush : _blackBrush,
+                    _        => throw new ArgumentException($"{parameter} is an invalid value for {nameof(parameter)}")
                 };
             }
             return null;

@@ -3,23 +3,23 @@ using System;
 
 namespace NullableSampleApp
 {
-#nullable disable
+#nullable enable
 
     public class Startup
     {
         public Startup()
         {
-            RegisterServices();
+            Services = RegisterServices();
         }
 
-        public IServiceProvider Services { get; private set; }
+        public IServiceProvider Services { get; }
 
-        public void RegisterServices()
+        public IServiceProvider RegisterServices()
         {
             var services = new ServiceCollection();
             // ... register services
             services.AddDbContext<BooksContext>();
-            Services = services.BuildServiceProvider();
+            return services.BuildServiceProvider();
         }
     }
 

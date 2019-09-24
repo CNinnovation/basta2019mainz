@@ -2,7 +2,7 @@
 
 namespace NullableSampleApp
 {
-#nullable disable
+#nullable enable
     public class BooksContext : DbContext
     {
         public BooksContext(DbContextOptions<BooksContext> options)
@@ -10,7 +10,7 @@ namespace NullableSampleApp
         {
         }
 
-        public DbSet<Book> Books { get; set; }
+        public DbSet<Book> Books { get; set; } = default!;
     }
 #nullable restore
 }
