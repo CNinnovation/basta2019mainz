@@ -1,2 +1,3 @@
-# bastamainz2019
-samples for the BASTA! conference in Mainz
+# BASTA! 2019 in Mainz
+
+Code samples for the BASTA! conference in Mainz
