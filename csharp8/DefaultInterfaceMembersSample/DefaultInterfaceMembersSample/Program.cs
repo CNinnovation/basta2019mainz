@@ -19,7 +19,7 @@ namespace DefaultInterfaceMembersSample
         }
 
         // https://github.com/dotnet/docs/issues/14127
-        // base call coming in C# 9
+        // base call coming in C# 8.x
         //public virtual IPosition Move(IPosition newPosition)
         //{
         //    var newpos = base(IShape).Move(newPosition);
