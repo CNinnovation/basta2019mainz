@@ -61,7 +61,7 @@ namespace ClientApp
             var cts = new CancellationTokenSource();
             await s_hubConnection.StartAsync(cts.Token);
 
-            //// read from the hub using ChannelReader
+            // read from the hub using ChannelReader
             //var channel = await s_hubConnection.StreamAsChannelAsync<SomeData>("GetSomeDataWithChannelReader", 100, 1000, cts.Token);
             //while (await channel.WaitToReadAsync())
             //{
@@ -71,8 +71,8 @@ namespace ClientApp
             //    }
             //}
 
-            // read from the hub using async streams
-            var stream = s_hubConnection.StreamAsync<SomeData>("GetSomeDataWithAsyncStreams", 20, 100, cts.Token);
+            //// read from the hub using async streams
+            var stream = s_hubConnection.StreamAsync<SomeData>("GetSomeDataWithChannelReader", 20, 100, cts.Token);
             await foreach (var d in stream)
             {
                 Console.WriteLine($"received {d}");

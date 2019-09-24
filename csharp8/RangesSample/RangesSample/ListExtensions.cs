@@ -16,6 +16,7 @@ namespace RangesSample
             return list.Where((item, index) => rng.Any(x => x == index)).ToList();
         }
 
+        // extension methods not (yet?) possible
         //public static IList<T> Slice<T>(this IList<T> list, int start, int length)
         //{
         //    return list.Skip(start).Take(length).ToList();
