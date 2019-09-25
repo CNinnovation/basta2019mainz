@@ -26,7 +26,7 @@ namespace GenericViewModels.MVVM
             }
         }
 
-        private const string InitializeFirst = "Initialize the ServiceProvider first";
+        private const string InitializeFirst = "Initialize the ServiceLocator first";
 
         private static IHost? s_host;
 

@@ -74,7 +74,7 @@ namespace GenericViewModels.ViewModels
 
         protected virtual TItemViewModel? ToViewModel(TItem? item) => _viewModelMap.GetViewModel(item);
 
-        public virtual IEnumerable<TItemViewModel> Items => _itemsService.Items.Select(item => ToViewModel(item));
+        public virtual IEnumerable<TItemViewModel> Items => _itemsService.Items.Select(item => ToViewModel(item))!;
 
         public virtual TItemViewModel? SelectedItem
         {
