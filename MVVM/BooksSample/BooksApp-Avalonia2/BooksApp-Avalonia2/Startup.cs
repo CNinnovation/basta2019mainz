@@ -40,10 +40,6 @@ namespace BooksApp_Avalonia2
             services.AddScoped<ISharedItems<Book>, SharedItems<Book>>();
             services.AddScoped<IRepository<Book, int>, BooksSampleRepository>();
 
-            //services.AddHttpClient("cni", client =>
-            //{
-            //    // TODO: get base address from configuration, use the context
-            //}).AddTypedClient<ICustomerClientService, CustomerClientService>();
         }
 
         private static void ConfigureLogging(ILoggingBuilder logging)

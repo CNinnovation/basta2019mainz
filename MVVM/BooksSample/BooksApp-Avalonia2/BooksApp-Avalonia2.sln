@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29318.209
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksApp-Avalonia2", "BooksApp-Avalonia2\BooksApp-Avalonia2.csproj", "{93743BF7-9C6A-4226-A4E5-85E46DA70443}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksApp-Avalonia2", "BooksApp-Avalonia2\BooksApp-Avalonia2.csproj", "{93743BF7-9C6A-4226-A4E5-85E46DA70443}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generic.ViewModels", "..\Generic.ViewModels\Generic.ViewModels.csproj", "{9A1E3747-DC53-4130-915D-89028CD62137}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksLib", "..\BooksLib\BooksLib.csproj", "{F7059BC7-159A-41CB-9C96-FA9B36A46625}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{5482D33A-9BC6-47F2-9168-B9E24ABEE522}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9A1E3747-DC53-4130-915D-89028CD62137} = {5482D33A-9BC6-47F2-9168-B9E24ABEE522}
+		{F7059BC7-159A-41CB-9C96-FA9B36A46625} = {5482D33A-9BC6-47F2-9168-B9E24ABEE522}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {17CC02ED-CE2F-4929-AFCC-A0EAE70B581E}
