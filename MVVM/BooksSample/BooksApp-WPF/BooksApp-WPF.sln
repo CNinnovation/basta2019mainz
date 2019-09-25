@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29318.209
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksApp-WPF", "BooksApp-WPF\BooksApp-WPF.csproj", "{5C68234E-B784-4E9E-B2B0-BCF8FEDC0DF1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generic.ViewModels", "..\Generic.ViewModels\Generic.ViewModels.csproj", "{D12EF4B9-7F38-4E71-9214-FAF7D844BEDC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksLib", "..\BooksLib\BooksLib.csproj", "{636BD202-C507-4398-A51D-6D7FBACCC04E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{F859D79E-1963-43D7-8BF7-E654DDDABDEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Windows_UWP|Any CPU = Windows_UWP|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C68234E-B784-4E9E-B2B0-BCF8FEDC0DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C68234E-B784-4E9E-B2B0-BCF8FEDC0DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C68234E-B784-4E9E-B2B0-BCF8FEDC0DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C68234E-B784-4E9E-B2B0-BCF8FEDC0DF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C68234E-B784-4E9E-B2B0-BCF8FEDC0DF1}.Windows_UWP|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C68234E-B784-4E9E-B2B0-BCF8FEDC0DF1}.Windows_UWP|Any CPU.Build.0 = Debug|Any CPU
+		{D12EF4B9-7F38-4E71-9214-FAF7D844BEDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D12EF4B9-7F38-4E71-9214-FAF7D844BEDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D12EF4B9-7F38-4E71-9214-FAF7D844BEDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D12EF4B9-7F38-4E71-9214-FAF7D844BEDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D12EF4B9-7F38-4E71-9214-FAF7D844BEDC}.Windows_UWP|Any CPU.ActiveCfg = Windows_UWP|Any CPU
+		{D12EF4B9-7F38-4E71-9214-FAF7D844BEDC}.Windows_UWP|Any CPU.Build.0 = Windows_UWP|Any CPU
+		{636BD202-C507-4398-A51D-6D7FBACCC04E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{636BD202-C507-4398-A51D-6D7FBACCC04E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{636BD202-C507-4398-A51D-6D7FBACCC04E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{636BD202-C507-4398-A51D-6D7FBACCC04E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{636BD202-C507-4398-A51D-6D7FBACCC04E}.Windows_UWP|Any CPU.ActiveCfg = Windows_UWP|Any CPU
+		{636BD202-C507-4398-A51D-6D7FBACCC04E}.Windows_UWP|Any CPU.Build.0 = Windows_UWP|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D12EF4B9-7F38-4E71-9214-FAF7D844BEDC} = {F859D79E-1963-43D7-8BF7-E654DDDABDEC}
+		{636BD202-C507-4398-A51D-6D7FBACCC04E} = {F859D79E-1963-43D7-8BF7-E654DDDABDEC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49E2DA93-F7F3-4C46-9875-598F08222BE1}
+	EndGlobalSection
+EndGlobal

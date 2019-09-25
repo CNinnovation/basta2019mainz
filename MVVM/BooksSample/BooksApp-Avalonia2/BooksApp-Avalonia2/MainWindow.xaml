@@ -1,0 +1,29 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="BooksApp_Avalonia2.MainWindow"
+        Title="BooksApp_Avalonia2">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="auto" />
+      <RowDefinition Height="auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition />
+      <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+ 
+    <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+      <MenuItem Header="Books">
+        <MenuItem Header="Refresh" Command="{Binding ViewModel.RefreshCommand}" />
+        <MenuItem Header="Add" Command="{Binding ViewModel.AddCommand}" />
+      </MenuItem>
+    </Menu>
+    <ListBox Grid.Row="2" Items="{Binding ViewModel.Items, Mode=OneWay}"
+             SelectedItem="{Binding ViewModel.SelectedItem, Mode=TwoWay}" >
+    </ListBox>
+  </Grid>
+</Window>
