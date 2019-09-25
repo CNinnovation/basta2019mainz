@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksLib", "BooksLib\BooksL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generic.ViewModels", "Generic.ViewModels\Generic.ViewModels.csproj", "{AC8A89A5-6676-4E44-9755-41D4038ADDB1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{E47C05E0-69C1-4D28-8E32-82861400751C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{81650666-E118-4E47-8B5D-B0F68A8E4215}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -244,8 +244,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6FCAFE96-EFD7-475C-A4F7-B4ECB3B1FB3F} = {E47C05E0-69C1-4D28-8E32-82861400751C}
-		{AC8A89A5-6676-4E44-9755-41D4038ADDB1} = {E47C05E0-69C1-4D28-8E32-82861400751C}
+		{6FCAFE96-EFD7-475C-A4F7-B4ECB3B1FB3F} = {81650666-E118-4E47-8B5D-B0F68A8E4215}
+		{AC8A89A5-6676-4E44-9755-41D4038ADDB1} = {81650666-E118-4E47-8B5D-B0F68A8E4215}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2BD20541-9731-453D-8694-2A290B4FEE53}
