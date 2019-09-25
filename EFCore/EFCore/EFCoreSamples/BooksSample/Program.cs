@@ -30,7 +30,7 @@ namespace BooksSample
             await p.UpdateBookAsync();
             await QuerySamples.QueryBookAsync("Professional C# 7 and .NET Core 2.0");
             await QuerySamples.FilterBooksAsync("Pro");
-            await QuerySamples.UseEFCunctions("C#");
+            await QuerySamples.UseEFFunctions("C#");
             ConflictHandling();
 
             await p.DeleteBookAsync(2);
@@ -211,16 +211,17 @@ namespace BooksSample
             Console.WriteLine();
         }
 
-        // this method only returns the deleted book if the global query filter
-        // is removed in the BooksContext class
         private async Task QueryDeletedBooksAsync()
         {
             using (var context = new BooksContext())
             {
                 IEnumerable<Book> deletedBooks =
                     await context.Books
+                    .IgnoreQueryFilters()
                     .Where(b => EF.Property<bool>(b, IsDeleted))
                     .ToListAsync();
+
+                
                 //IEnumerable<Book> deletedBooks =
                 //await context.Books.FromSql($"SELECT * FROM Books WHERE IsDeleted = 1").ToListAsync();
                 foreach (var book in deletedBooks)

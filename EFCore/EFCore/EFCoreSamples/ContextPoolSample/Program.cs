@@ -29,7 +29,6 @@ namespace ContextPoolSample
             var services = new ServiceCollection();
             services.AddTransient<BooksController>();
             services.AddTransient<BooksService>();
-            services.AddEntityFrameworkSqlServer();
             services.AddDbContextPool<BooksContext>(options => options.UseSqlServer(ConnectionString));
             services.AddLogging(); ;
 

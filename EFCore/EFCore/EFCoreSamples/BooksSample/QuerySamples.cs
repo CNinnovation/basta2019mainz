@@ -14,7 +14,7 @@ namespace BooksSample
             Console.WriteLine(nameof(QueryAllBooksAsync));
             using (var context = new BooksContext())
             {
-                List<Book> books = await context.Books.ToListAsync();
+                List<Book> books = await context.Books.TagWith("QueryAllBooks").ToListAsync();
                 foreach (var b in books)
                 {
                     Console.WriteLine(b);
@@ -57,6 +57,7 @@ namespace BooksSample
             {
                 List<Book> wroxBooks = await context.Books
                     .Where(b => b.Publisher == "Wrox Press")
+                    .TagWith("QueryBooks")
                     .ToListAsync();
 
                 foreach (var b in wroxBooks)
@@ -74,7 +75,7 @@ namespace BooksSample
             {
                 using (var context = new BooksContext())
                 {
-                    Book book = await context.Books.FirstOrDefaultAsync(b => b.Title == title);
+                    Book book = await context.Books.TagWith("QueryBook").FirstOrDefaultAsync(b => b.Title == title);
                     if (book != null)
                     {
                         Console.WriteLine($"found book {book}");
@@ -95,6 +96,7 @@ namespace BooksSample
             {
                 List<Book> wroxBooks = await context.Books
                     .Where(b => b.Title.Contains(title))
+                    .TagWith("FilterBooks")
                     .ToListAsync();
 
                 foreach (var b in wroxBooks)
@@ -112,13 +114,15 @@ namespace BooksSample
             {
                 using (var context = new BooksContext())
                 {
-                    var books = context.Books.Where(b => b.Title.StartsWith("Pro"))
+                    var books = context.Books
+                        .TagWith("ClientAndServer")
+                        .Where(b => b.Title.StartsWith("Pro"))
                         .OrderBy(b => b.Title)
                         .Select(b => new
                         {
                             b.Title,
-                            Authors = string.Join(", ", b.BookAuthors.Select(a => $"{a.Author.FirstName} {a.Author.LastName}").ToArray())
-                            //  Authors = b.BookAuthors  // client evaluation
+                            // Authors = string.Join(", ", b.BookAuthors.Select(a => $"{a.Author.FirstName} {a.Author.LastName}").ToArray())
+                            Authors = b.BookAuthors  // client evaluation
                         });
 
                     foreach (var b in books)
@@ -149,14 +153,14 @@ namespace BooksSample
             Console.WriteLine();
         }
 
-        public static async Task UseEFCunctions(string titleSegment)
+        public static async Task UseEFFunctions(string titleSegment)
         {
-            Console.WriteLine(nameof(UseEFCunctions));
+            Console.WriteLine(nameof(UseEFFunctions));
             using (var context = new BooksContext())
             {
                 string likeExpression = $"%{titleSegment}%";
 
-                IList<Book> books = await context.Books.Where(b => EF.Functions.Like(b.Title, likeExpression)).ToListAsync();
+                IList<Book> books = await context.Books.TagWith("UseEFFunctions").Where(b => EF.Functions.Like(b.Title, likeExpression)).ToListAsync();
                 foreach (var b in books)
                 {
                     Console.WriteLine($"{b.Title} {b.Publisher}");
@@ -168,7 +172,7 @@ namespace BooksSample
         public static void CompileQuery()
         {
             Console.WriteLine(nameof(CompileQuery));
-            Func<BooksContext, string, IEnumerable<Book>> query = EF.CompileQuery<BooksContext, string, Book>((context, publisher) => context.Books.Where(b => b.Publisher == publisher));
+            Func<BooksContext, string, IEnumerable<Book>> query = EF.CompileQuery<BooksContext, string, Book>((context, publisher) => context.Books.TagWith("Compiled").Where(b => b.Publisher == publisher));
 
             using (var context = new BooksContext())
             {

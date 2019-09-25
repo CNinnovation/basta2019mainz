@@ -18,7 +18,7 @@ namespace BooksSample
 
     public class BooksContext : DbContext
     {
-        private const string ConnectionString = @"server=(localdb)\MSSQLLocalDb;database=BooksSample;trusted_connection=true";
+        private const string ConnectionString = @"server=(localdb)\MSSQLLocalDb;database=BastaBooksSample;trusted_connection=true";
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<BookAuthor> BookAuthors { get; set; }

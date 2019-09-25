@@ -5,7 +5,7 @@ namespace BooksSample
     public class Book
     {
         // parameterless constructor neeeded for EF Core
-        private Book() { }
+        // private Book() { }
 
         public Book(string title, string publisher)
         {
